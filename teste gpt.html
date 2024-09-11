@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela Periódica</title>
+    <style>
+        .elemento {
+            display: inline-block;
+            padding: 10px;
+            margin: 5px;
+            background-color: lightblue;
+            border: 1px solid #000;
+            text-align: center;
+            width: 50px;
+        }
+        .escondido {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="text" id="barraDePesquisa" placeholder="Buscar elemento..." onkeyup="pesquisarElemento()">
+    
+    <div id="tabelaPeriodica">
+        <div class="elemento" data-simbolo="H">H</div>
+        <div class="elemento" data-simbolo="He">He</div>
+        <div class="elemento" data-simbolo="Li">Li</div>
+        <div class="elemento" data-simbolo="Be">Be</div>
+        <div class="elemento" data-simbolo="B">B</div>
+        <div class="elemento" data-simbolo="C">C</div>
+        <div class="elemento" data-simbolo="N">N</div>
+        <div class="elemento" data-simbolo="O">O</div>
+        <div class="elemento" data-simbolo="F">F</div>
+        <div class="elemento" data-simbolo="Ne">Ne</div>
+        <!-- Adicione todos os outros elementos aqui -->
+    </div>
+
+    <script>
+        function pesquisarElemento() {
+            // Obtém o valor digitado pelo usuário
+            var input = document.getElementById('barraDePesquisa').value.toUpperCase();
+            var elementos = document.getElementsByClassName('elemento');
+
+            // Percorre todos os elementos da tabela
+            for (var i = 0; i < elementos.length; i++) {
+                var simbolo = elementos[i].getAttribute('data-simbolo').toUpperCase();
+                
+                // Exibe ou oculta os elementos com base na busca
+                if (simbolo.startsWith(input)) {
+                    elementos[i].classList.remove('escondido');
+                } else {
+                    elementos[i].classList.add('escondido');
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
